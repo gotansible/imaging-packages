@@ -41,30 +41,29 @@
     state=present
     update_cache=yes
 
-- name: depend - build dir
-  file:
-    state=directory
-    path={{ imaging_packages_build_dir }}
-
-
-- name: install phash
-  get_url:
-    url='http://www.phash.org/releases/pHash-0.9.6.tar.gz'
-    dest={{ imaging_packages_build_dir }}
-
-- name: depend - unarchive phash 
-  unarchive:
-    src={{ imaging_packages_build_dir }}/pHash-0.9.6.tar.gz
-    dest={{ imaging_packages_build_dir }}
-    copy=no
-
-- name: depend - config make install phash
-  shell: "{{ item }}"
-  args:
-    chdir: "{{ imaging_packages_build_dir }}/pHash-0.9.6"
-  with_items:
-    - ./configure
-    - ./make
-    - ./make install
+#- name: depend - build dir
+#  file:
+#    state=directory
+#    path={{ imaging_packages_build_dir }}
+#
+#- name: install phash
+#  get_url:
+#    url='http://www.phash.org/releases/pHash-0.9.6.tar.gz'
+#    dest={{ imaging_packages_build_dir }}
+#
+#- name: depend - unarchive phash 
+#  unarchive:
+#    src={{ imaging_packages_build_dir }}/pHash-0.9.6.tar.gz
+#    dest={{ imaging_packages_build_dir }}
+#    copy=no
+#
+#- name: depend - config make install phash
+#  shell: "{{ item }}"
+#  args:
+#    chdir: "{{ imaging_packages_build_dir }}/pHash-0.9.6"
+#  with_items:
+#    - ./configure
+#    - ./make
+#    - ./make install
 
 
