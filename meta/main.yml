@@ -9,17 +9,8 @@ galaxy_info:
   min_ansible_version: 1.8
   platforms:
   - name: Ubuntu
-  #  versions:
-  #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-  #  - precise
-  #  - quantal
-  #  - raring
-  #  - saucy
-  #  - trusty
+    versions:
+    - trusty
   #- name: Debian
   #  versions:
   #  - all
