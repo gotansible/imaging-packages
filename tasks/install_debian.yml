@@ -1,0 +1,70 @@
+---
+
+- name: depend - install
+  apt:
+    name={{ item }}
+    state=present
+    update_cache=yes
+    cache_valid_time=3600
+  with_items:
+    - build-essential
+    - yasm
+    - cimg-dev
+    - libphash0-dev
+    - libmagickcore-dev
+    - g++
+    - liborc-0.4-dev
+    - libvips-dev 
+    - gobject-introspection 
+    - libglib2.0-dev
+    - libjpeg-turbo8-dev
+    - libpng12-dev
+  when: ansible_os_family == 'Debian'
+
+# https://github.com/jcupitt/libvips
+- name: depend - install
+  apt:
+    name=imagemagick
+    state=present
+    update_cache=yes
+
+    #apt_package "imagemagick" do
+    #	options("--fix-missing")
+    #end
+
+- name: depend - add ppa for ffmpeg
+  apt_repository: repo='ppa:mc3man/trusty-media'
+
+- name: depend - install ffmpeg from apt
+  apt:
+    name=ffmpeg
+    state=present
+    update_cache=yes
+
+- name: depend - build dir
+  file:
+    state=directory
+    path={{ imaging_packages_build_dir }}
+
+
+- name: install phash
+  get_url:
+    url='http://www.phash.org/releases/pHash-0.9.6.tar.gz'
+    dest={{ imaging_packages_build_dir }}
+
+- name: depend - unarchive phash 
+  unarchive:
+    src={{ imaging_packages_build_dir }}/pHash-0.9.6.tar.gz
+    dest={{ imaging_packages_build_dir }}
+    copy=no
+
+- name: depend - config make install phash
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ imaging_packages_build_dir }}/pHash-0.9.6"
+  with_items:
+    - ./configure
+    - ./make
+    - ./make install
+
+
