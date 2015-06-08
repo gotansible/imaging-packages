@@ -3,7 +3,7 @@ dependencies: []
 
 galaxy_info:
   author: Franklin Wise
-  description: 
+  description: Installs ImageMagick and other basic imaging libraries
   company: 
   license: MIT
   min_ansible_version: 1.8
