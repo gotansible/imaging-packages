@@ -2,13 +2,13 @@
 dependencies: []
 
 galaxy_info:
-  author: your name
+  author: Franklin Wise
   description: 
-  company: your company (optional)
-  license: license (GPLv2, CC-BY, etc)
+  company: 
+  license: MIT
   min_ansible_version: 1.8
-  #platforms:
-  #- name: Ubuntu
+  platforms:
+  - name: Ubuntu
   #  versions:
   #  - all
   #  - lucid
@@ -92,7 +92,7 @@ galaxy_info:
   #  - 11SP2
   #  - 11SP3
   #
-  #categories:
+  categories:
   #- cloud
   #- cloud:ec2
   #- cloud:gce
@@ -104,7 +104,7 @@ galaxy_info:
   #- development
   #- monitoring
   #- networking
-  #- packaging
+  - packaging
   #- system
   #- web
 
